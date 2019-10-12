@@ -8,7 +8,6 @@
         \/          \/      \/               \/           \/ 
 */
 namespace SpawnUI;
-
 use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -19,15 +18,14 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\CommandExecutor;
 use pocketmine\command\ConsoleCommandSender;
-
 class Main extends PluginBase implements Listener {
 	
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);    
-        $this->getLogger()->info(TextFormat::GREEN . "SpawnUI Enable");
+        $this->getLogger()->info(TextFormat::GREEN . "spawn Enable");
     }
     public function onDisable() {
-        $this->getLogger()->info(TextFormat::RED . "SpawnUI Disable");
+        $this->getLogger()->info(TextFormat::RED . "spawn Disable");
     }
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
         switch($cmd->getName()){                    
@@ -60,10 +58,11 @@ class Main extends PluginBase implements Listener {
             
             
             });
-            $form->setTitle("§l§aSpawn");
-			$form->setContent("§7Teleport back to Spawn");
-            $form->addButton("§l§aSubmit");
-            $form->addButton("§l§cClose");
+            $form->setTitle("§bSpawn");
+			$form->setContent("§3Teleport to Spawn");
+            $form->addButton("§aSubmit");
+	    $form->addButton("");
+            $form->addButton("§cClose");
             $form->sendToPlayer($sender);
             return $form;                                            
     }
